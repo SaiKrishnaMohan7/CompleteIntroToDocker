@@ -39,3 +39,6 @@ pre-made containers are called images
 - [shell scripts](https://github.com/btholt/projects-for-complete-intro-to-containers/tree/master/docker-images-without-docker)
 
 - [docker images with docker](https://btholt.github.io/complete-intro-to-containers/docker-images-with-docker)
+- Kill all running containers: `docker kill $(docker ps -q)`
+
+### Dockerfile
