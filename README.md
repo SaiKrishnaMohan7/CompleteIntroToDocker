@@ -54,6 +54,8 @@ A set of instructions to docker on how to build your container
   - `docker run --init --rm -P node-app:1.0.0`: randomnly pick ports from the conatiner and map it to port 3000
   - better run: `docker run --init --detach -p 3000:3000 node-app:1.0.0` (--detach: run container in the background, -p is same as --publish)
 
+- `docker build -t <tagName> -f <dockerfileName>`: We can our custom dockerfile, named, *tagName.Dockerfile* ex: node-alpine.Dockerfile
+
 ### Layers
 
 Docker is smart enough to see the your FROM, RUN, and WORKDIR instructions haven't changed and wouldn't change if you ran them again so it uses the same containers it cached from the previous but it can see that your COPY is different since files changed between last time and this time, so it begins the build process there and re-runs all instructinos after that.
