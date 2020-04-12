@@ -3,7 +3,7 @@ const hapi = require('@hapi/hapi');
 async function start() {
   const server = hapi.server({
     host: "0.0.0.0", // bind to 0.0.0.0 instead of localhost, since the container won't be able to reach out gets stuck in a loop
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 5000
   });
 
   server.route({

@@ -53,3 +53,10 @@ A set of instructions to docker on how to build your container
 - `EXPOSE` instruction, flag requred when using this, -P
   - `docker run --init --rm -P node-app:1.0.0`: randomnly pick ports from the conatiner and map it to port 3000
   - better run: `docker run --init --detach -p 3000:3000 node-app:1.0.0` (--detach: run container in the background, -p is same as --publish)
+
+### Layers
+
+Docker is smart enough to see the your FROM, RUN, and WORKDIR instructions haven't changed and wouldn't change if you ran them again so it uses the same containers it cached from the previous but it can see that your COPY is different since files changed between last time and this time, so it begins the build process there and re-runs all instructinos after that.
+
+- Here, some problems occur, the install step (RUN npm ci) takes the most time and dockdr reruns all instructions from what it thniks has chnaged but in reality we chnageds something in our index file, which docker knows but we did nto chnage any dependencies. So for build performance, split *COPY in two COPY* instructions!
+- ! this makes sure that we make use of docker's LAYER caching and keep the LAYER of installed packages!
