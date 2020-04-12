@@ -42,3 +42,10 @@ pre-made containers are called images
 - Kill all running containers: `docker kill $(docker ps -q)`
 
 ### Dockerfile
+
+A set of instructions to docker on how to build your container
+
+- `docker run --init --rm --publish 3000:3000 node-app:1.0.0`: node, doesn't understand SIGTERM or SIGINT, terminate and interrupt.
+  - Problem: can't stop the server, docker listens but node deosn't
+  - Solution: running with `--init` (handled by a package called tini) handles the termintaion/interrupt signals
+  - `--publish`: maps the container port to the host's port so that the server can listen
