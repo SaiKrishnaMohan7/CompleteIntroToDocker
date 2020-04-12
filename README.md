@@ -49,3 +49,7 @@ A set of instructions to docker on how to build your container
   - Problem: can't stop the server, docker listens but node deosn't
   - Solution: running with `--init` (handled by a package called tini) handles the termintaion/interrupt signals
   - `--publish`: maps the container port to the host's port so that the server can listen
+
+- `EXPOSE` instruction, flag requred when using this, -P
+  - `docker run --init --rm -P node-app:1.0.0`: randomnly pick ports from the conatiner and map it to port 3000
+  - better run: `docker run --init --detach -p 3000:3000 node-app:1.0.0` (--detach: run container in the background, -p is same as --publish)
