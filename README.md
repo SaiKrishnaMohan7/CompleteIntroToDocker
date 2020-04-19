@@ -60,5 +60,29 @@ A set of instructions to docker on how to build your container
 
 Docker is smart enough to see the your FROM, RUN, and WORKDIR instructions haven't changed and wouldn't change if you ran them again so it uses the same containers it cached from the previous but it can see that your COPY is different since files changed between last time and this time, so it begins the build process there and re-runs all instructinos after that.
 
-- Here, some problems occur, the install step (RUN npm ci) takes the most time and dockdr reruns all instructions from what it thniks has chnaged but in reality we chnageds something in our index file, which docker knows but we did nto chnage any dependencies. So for build performance, split *COPY in two COPY* instructions!
+- Here, some problems occur, the install step (RUN npm ci) takes the most time and dockdr reruns all instructions from what it thniks has chnaged but in reality we chnageds something in our index file, which docker knows but we did nto chnage any dependencies. So for build performance, split *COPY into two COPY* instructions!
 - ! this makes sure that we make use of docker's LAYER caching and keep the LAYER of installed packages!
+
+### Bind Mounts
+
+Run a container, without building it using a dockerfile, like a pre-built container (nginx) or say, I have a contianerized server that I am actively developing and I want the chnages to reflect in the contianer as I change it. *Sahre data between host and container*
+
+ex: `docker run --mount type=bind,source="$(pwd)"/build,target=/usr/share/nginx/html -p 8080:80 nginx`
+
+### Volumes
+
+For persisting state between runs. Bind mounts are file systems managed by the host and shared with the container while volumes are managed by docker and mounted INTO the container. They can be shared, ex: databases
+
+- `docker run --env DATA_PATH=/data/num.txt --mount type=volume,src=volume-mount-data,target=/data volume-mount`: send env vars to docker
+- `docker prune volumes`: removes all local volumes
+- `docker prune images`: removes all exited images
+
+### Dev Containers in VS Code
+
+- [Direct link](https://btholt.github.io/complete-intro-to-containers/visual-studio-code)
+
+## Source
+
+- [Notes; bholt](https://btholt.github.io/complete-intro-to-containers)
+- [Shell Scripts](https://github.com/btholt/complete-intro-to-containers)
+- [Mini projects](https://github.com/btholt/projects-for-complete-intro-to-containers)
