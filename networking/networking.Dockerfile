@@ -1,5 +1,7 @@
 FROM node:12-stretch
 
+RUN npm i -g nodemon
+
 USER node
 
 # WORKDIR creates this dir as the root user and not USER node, so we create the folder as the USER node
@@ -16,4 +18,4 @@ RUN npm ci
 # Copy everything from host to container
 COPY --chown=node:node . .
 
-CMD ["node", "index.js"]
+CMD ["nodemon", "index.js"]

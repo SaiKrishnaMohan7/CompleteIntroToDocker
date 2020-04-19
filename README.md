@@ -99,6 +99,9 @@ Network for conatiners to talk to each other
 
 Run multiple conatiners with one command, `docker-compose up`, without worrying about manualy setting up network
 
+- `docker-compose up --build`: rebuild the images (when you have changed any of the docker files)
+- `docker-compose up --scale web=10`: spin up 10 instances of the web container; This requires a smarter way to allocate ports for conatainers, load balancing should help
+
 ## Source
 
 - [Notes; bholt](https://btholt.github.io/complete-intro-to-containers)
