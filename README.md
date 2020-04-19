@@ -95,6 +95,10 @@ Network for conatiners to talk to each other
 - a volume could be mounted to the `db` conatainer and mongo can be configured to read off of and write to that volume between runs
 - `docker run --init -p 3000:3000 --network=node-hapi-net --env MONGO_CONNECTION_STRING=mongodb://db:27017 netwroking-mongo-app`: run the `networking-mongo-app` on port 3000, connect to `node-hapi-network`, set env var for the container (note we refer to the database conatiner by the name we gave, `db`)
 
+### Docker Compose
+
+Run multiple conatiners with one command, `docker-compose up`, without worrying about manualy setting up network
+
 ## Source
 
 - [Notes; bholt](https://btholt.github.io/complete-intro-to-containers)
