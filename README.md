@@ -81,6 +81,8 @@ For persisting state between runs. Bind mounts are file systems managed by the h
 
 - [Direct link](https://btholt.github.io/complete-intro-to-containers/visual-studio-code)
 
+Uses bind mount so any changes being made inside the container is written to the host as well. So the regular commit flow can happen easily
+
 ## Source
 
 - [Notes; bholt](https://btholt.github.io/complete-intro-to-containers)
