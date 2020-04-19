@@ -92,6 +92,8 @@ Network for conatiners to talk to each other
 - `docker run -d --network=node-hapi-net -p 27017:27017 --name=db --rm mongo:3`: run the image mongo:3 (container) in the background and publish to PORT 27017 with name `db` (allows us to specifically refer to this container and use this as address on the network), `--rm` because when mongo conatiner exits, it doesn't get rid of all the logs and metadata until we tell it to
 - `docker run -it --network=node-hapi-net --rm mongo:3 mongo --host db`: run mogo3 image and run the mongo client in the conatner; So we have 2 mongo containers, one running the server `mongod` and the other running the client
 
+- a volume could be mounted to the `db` conatainer and mongo can be configured to read off of and write to that volume between runs
+
 ## Source
 
 - [Notes; bholt](https://btholt.github.io/complete-intro-to-containers)
