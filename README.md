@@ -102,6 +102,16 @@ Run multiple conatiners with one command, `docker-compose up`, without worrying 
 - `docker-compose up --build`: rebuild the images (when you have changed any of the docker files)
 - `docker-compose up --scale web=10`: spin up 10 instances of the web container; This requires a smarter way to allocate ports for conatainers, load balancing should help
 
+### Kubernetes
+
+Container Orchestration tool
+
+- *Master*: the brain, controls everything else
+- *Nodes*: do the actual work, house 1:N containers, manage workloads; can also be looked at as deploy target, a VM, another container, bare metal server
+- *Pods*: 2 to N interdependent containers deployed as one
+- *Service*: A groiup of Pods making jup one service, like a shopping cart service. All these pods talk to each other and services ensure the connection between these pods is relaible since we create and destroy pods on the fly depending on scale
+- *Deployment*: tell K8s in what state you want the pods should be in
+
 ## Source
 
 - [Notes; bholt](https://btholt.github.io/complete-intro-to-containers)
