@@ -112,6 +112,12 @@ Container Orchestration tool
 - *Service*: A groiup of Pods making jup one service, like a shopping cart service. All these pods talk to each other and services ensure the connection between these pods is relaible since we create and destroy pods on the fly depending on scale
 - *Deployment*: tell K8s in what state you want the pods should be in
 
+## Miscelleneous but important
+
+- **CMD and ENTRYPOINT**
+  - cli params passed to `docker run` are replaced entirely vs appendage
+  - use BOTH if you want a default value when no cli args are passed in (ENTRYPOINT will come before CMD; Order matters)
+
 ## Source
 
 - [Notes; bholt](https://btholt.github.io/complete-intro-to-containers)
